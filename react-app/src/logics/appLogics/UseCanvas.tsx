@@ -182,12 +182,9 @@ export const useCanvas = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
 
 
     const updatePixels = useCallback((ctx: CanvasRenderingContext2D) => {
-        const landscapeMobile = window.innerHeight > window.innerWidth && window.innerWidth < 500
         const radius = window.innerWidth * window.innerHeight;
-        const cX = !landscapeMobile ? (minXRef.current + maxXRef.current) / 2
-            : (minXRef.current + maxXRef.current) / 2 + text.length * window.innerHeight * 0.075;
-        const cY = !landscapeMobile ? (minYRef.current + maxYRef.current) / 2
-            : (minYRef.current + maxYRef.current) / 2 - 50;
+        const cX = (minXRef.current + maxXRef.current) / 2;
+        const cY = (minYRef.current + maxYRef.current) / 2;
 
         const accelerating = Math.random() * 0.6 + 0.15;
         const slowing = Math.random() * 0.1 + 0.05;
@@ -213,7 +210,7 @@ export const useCanvas = (canvasRef: React.RefObject<HTMLCanvasElement>) => {
                 pixel.y = y;
             };
         });
-    }, [pixelSize, text.length]);
+    }, [pixelSize]);
 
 
     const renderFrame = useCallback(() => {
