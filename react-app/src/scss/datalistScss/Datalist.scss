@@ -1,0 +1,727 @@
+@import "bootstrap";
+
+
+$customColor: #11a3ab;
+$customFilterColor: #ec7575;
+$customColorApp: #21a6d5;
+
+//Custom button color
+.btn-custom {
+  @include button-variant($customColor, darken($customColor, 7.5%), darken($customColor, 40%), lighten($customColor, 20%), darken($customColor, 30%), darken($customColor, 30%));
+}
+
+/* button-variant($background, $border, text, $hover-background, $hover-border, $active-background, $active-border) */
+
+.btn-outline-custom {
+  @include button-outline-variant($customColor, #fffafa, lighten($customColor, 5%), $customColor);
+  background-color: #dff7f7;
+}
+
+.btn-outline-custom-delete {
+  @include button-outline-variant($customFilterColor, #fffafa, lighten($customFilterColor, 5%), $customFilterColor);
+}
+
+
+
+.btn-outline-customflip {
+  @include button-outline-variant($customColorApp, #fffafa, lighten($customColorApp, 25%), $customColorApp, darken($customColorApp, 20%));
+  background: linear-gradient(-90deg, #ee7752, #e73c7e, #21a6d5, #17d5ab);
+  background-attachment: fixed;
+  color: #fff;
+  border: none;
+
+  &:hover {
+    background: linear-gradient(-45deg, #f70a0b, #ee7752, #ecf700);
+    color: #fff;
+  }
+}
+
+.btn-outline-customflip-reverse {
+  @include button-outline-variant($customColorApp, #fffafa, lighten($customColorApp, 25%), $customColorApp, darken($customColorApp, 20%));
+  background: linear-gradient(-90deg, #17d5ab, #21a6d5, #e73c7e, #ee7752);
+  background-attachment: fixed;
+  color: #fff;
+  border: none;
+
+  &:hover {
+    background: linear-gradient(-45deg, #f70a0b, #ee7752, #ecf700);
+    color: #fff;
+  }
+}
+
+
+.btn-outline-customflip-checked {
+  @include button-outline-variant($customColorApp, #fffafa, lighten($customColorApp, 25%), $customColorApp, darken($customColorApp, 20%));
+  background: linear-gradient(-45deg, #f70a0b, #ee7752, #ecf700);
+  color: #fff;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  top: 5px;
+  left: 5px;
+}
+
+.btn-outline-filter {
+  @include button-outline-variant($customFilterColor, #fffafa, lighten($customFilterColor, 5%), $customFilterColor);
+  background-color: lighten($customFilterColor, 25%);
+}
+
+
+.btn-outline-auth {
+  @include button-outline-variant($customColor, #fffafa, lighten($customColor, 5%), $customColor);
+  background-color: #dff7f7;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  box-shadow: 5px 5px 0 rgb(114, 110, 110);
+  -webkit-box-shadow: 5px 5px 0 rgb(114, 110, 110);
+  -moz-box-shadow: 5px 5px 0 rgb(114, 110, 110);
+  transition: all 0.1s ease;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+}
+
+.btn-outline-auth:active {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  bottom: 0px;
+  right: 0px;
+}
+
+
+.btn-link {
+  color: #fff;
+
+  &:hover {
+    color: darken($customFilterColor, 30%);
+    background: lighten($customFilterColor, 14%);
+  }
+}
+
+// Selected custom color
+.custom-selected-input {
+  border-color: $customColor;
+}
+
+.custom-selected-input:checked {
+  background-color: $customColor;
+  border-color: $customColor
+}
+
+// Radio buttons custom color in Modal
+.custom-control-input {
+  border-color: $customFilterColor
+}
+
+.custom-control-input:checked {
+  background-color: $customFilterColor;
+  border-color: $customFilterColor
+}
+
+// Radio buttons custom color in Modal
+.mobile-input {
+  border-color: $customColorApp;
+}
+
+.mobile-input:checked {
+  background-color: $customColorApp;
+  border-color: $customColorApp;
+}
+
+
+.boxshadow5px {
+  box-shadow: 5px 5px 0 rgb(114, 110, 110)
+}
+
+.boxshadow-5px {
+  box-shadow: 5px -5px 0 rgb(114, 110, 110)
+}
+
+
+
+
+.container {
+  top: 0;
+  left: 0;
+  margin-left: 0;
+  margin-right: 0;
+  width: 100%;
+}
+
+body {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+}
+
+// Hide responsive small filter in Modal
+.responsiveSmall-Filter {
+  display: none;
+}
+
+// Show responsive large filter in Modal
+.responsiveLarge-Filter {
+  color: #11a3ab;
+}
+
+// Style Modals 
+.inline-width {
+  display: inline-block;
+  width: 9em;
+}
+
+
+table {
+  width: 100%;
+}
+
+thead {
+  display: table;
+  width: max-content;
+}
+
+tbody {
+  @media only screen and (min-width: 801px) {
+    --height: 410px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    --height: 370px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    --height: 350px;
+  }
+
+  @media only screen and (max-width: 350px) {
+    --height: 310px;
+  }
+
+  height: calc(100vh - var(--height));
+  overflow: auto;
+  overflow-x: hidden;
+  display: block;
+}
+
+tbody tr {
+  display: table;
+}
+
+td {
+  word-break: keep-all;
+}
+
+$width: (
+  1: 150px,
+  2: 120px,
+  3: 110px,
+  4: 100px,
+  5: 130px,
+  6: 100px,
+  7: 100px,
+  8: 120px,
+  9: 100px,
+  10: 250px,
+  11: 70px,
+  12: 20px
+);
+$tdcolumn: 12;
+
+@for $i from 1 to $tdcolumn {
+  td:nth-child(#{$i}) {
+    min-width: map-get($width , $i)
+  }
+
+  ;
+}
+
+td,
+th {
+  text-align: center;
+}
+
+
+.buttonFilter-Id1MinMax {
+  height: 50px;
+  background: #ec7575;
+  color: #dff7f7;
+  min-width: 100px;
+}
+
+.buttonFilter-Id1 {
+  height: 50px;
+  min-width: 100px;
+}
+
+.buttonFilter-MinMax {
+  height: 50px;
+  background: #ec7575;
+  color: #dff7f7;
+}
+
+
+.buttonFilter-Delete {
+  height: 50px;
+  max-width: 55px;
+  white-space: normal;
+}
+
+
+.buttonFilter-IsOnlySelected {
+  height: 50px;
+  background: #ec7575;
+  color: #dff7f7;
+  max-width: 100px;
+  white-space: nowrap;
+}
+
+.buttonFilter-Selected {
+  height: 50px;
+  max-width: 100px;
+  white-space: nowrap;
+}
+
+.buttonFilter-DeSelect {
+  height: 50px;
+  max-width: 55px;
+  white-space: nowrap;
+}
+
+.buttonSort {
+  height: 30px;
+}
+
+
+.noWrap {
+  white-space: nowrap;
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayBlock {
+  display: block;
+}
+
+.width270 {
+  width: 270px;
+}
+
+.marginRight10 {
+  margin-right: 10px;
+}
+
+
+.tableHeaderColumn {
+  height: 10px;
+}
+
+
+// Table style standard
+.table-standard {
+  overflow: auto;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  tr {
+    border: 1px solid #ccc;
+    z-index: 0;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    white-space: normal;
+    text-align: left;
+    z-index: 0;
+    width: max-content;
+
+    @media only screen and (min-width: 801px) {
+      padding-left: 30%;
+      font-size: large;
+    }
+
+    @media only screen and (max-width: 800px) {
+      padding-left: 37%;
+      font-size: medium;
+    }
+
+    @media only screen and (max-width: 400px) {
+      padding-left: 40%;
+      font-size: small;
+    }
+
+    @media only screen and (max-width: 350px) {
+      padding-left: 40%;
+      font-size: 11px;
+    }
+  }
+
+  td:before {
+    overflow-y: scroll;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 45%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    z-index: 0;
+  }
+
+  td:before {
+    content: attr(td-title);
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+  #FilterModal {
+    .modal-body {
+      font-size: smaller;
+
+      @media only screen and (max-width: 400px) {
+        font-size: 12px;
+      }
+    }
+
+    .form-control {
+      font-size: smaller;
+
+      @media only screen and (max-width: 370px) {
+        font-size: 10px;
+      }
+    }
+
+    .form-select {
+      font-size: smaller;
+
+      @media only screen and (max-width: 370px) {
+        font-size: 10px;
+      }
+    }
+  }
+
+  #SortModal {
+    @media only screen and (max-width: 370px) {
+      .select-sorting {
+        font-size: 11px;
+      }
+    }
+  }
+
+
+  // Show responsive small filter in modal
+  .responsiveSmall-Filter {
+    display: flex;
+    flex-direction: row;
+    color: #11a3ab
+  }
+
+  // Hide responsive large filter in modal
+  .responsiveLarge-Filter {
+    display: none;
+  }
+}
+
+
+//Style Modal Font
+#StyleModal {
+  @media only screen and (max-width: 370px) {
+    font-size: 14px;
+  }
+}
+
+
+// Modal animation
+.modal-header {
+  border-bottom: 0 none;
+}
+
+.modal-footer {
+  border-top: 0 none;
+}
+
+.modal-content-color {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #21a6d5, #17d5ab);
+  background-size: 170% 170%;
+  animation: modal-gradient 5s linear infinite;
+}
+
+.modal-content-notanimated {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #21a6d5, #17d5ab);
+  background-size: 100% 100%;
+}
+
+@keyframes modal-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+// Button close hover animation in Modal
+.btn-modal:hover {
+  transition: transform 0.7s linear;
+  transform: rotate(360deg);
+}
+
+
+// Button click 3D style
+.btnStyle {
+  position: relative;
+  box-shadow: 5px 5px 0 rgb(114, 110, 110);
+  -webkit-box-shadow: 5px 5px 0 rgb(114, 110, 110);
+  -moz-box-shadow: 5px 5px 0 rgb(114, 110, 110);
+  transition: all 0.1s ease;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+}
+
+.btnStyle:active {
+  position: relative;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  top: 5px;
+  left: 5px;
+}
+
+// Button 3d in menu
+.btnStyle-Menu {
+  box-shadow: 5px -5px 0 rgb(114, 110, 110);
+  -webkit-box-shadow: 5px -5px 0 rgb(114, 110, 110);
+  -moz-box-shadow: 5px -5px 0 rgb(114, 110, 110);
+  transition: all 0.1s ease;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+}
+
+.btnStyle-Menu:active {
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  top: 5px;
+  left: 5px;
+}
+
+
+// Select checkbox 3D style
+#selected {
+  position: relative;
+  box-shadow: 3px 3px 0 rgb(114, 110, 110);
+  -webkit-box-shadow: 3px 3px 0 rgb(114, 110, 110);
+  -moz-box-shadow: 3px 3px 0 rgb(114, 110, 110);
+  transition: all 0.1s ease;
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+}
+
+#selected:checked {
+  position: relative;
+  box-shadow: 0px 0px 0 rgb(53, 50, 50);
+  -webkit-box-shadow: 0px 0px 0 rgb(53, 50, 50);
+  -moz-box-shadow: 0px 0px 0 rgb(53, 50, 50);
+  top: 5px;
+  left: 5px;
+}
+
+
+
+
+//calc(#{11 + $tHeight}px)
+
+@mixin fontSizesMenu {
+  @media only screen and (min-width: 801px) {
+    font-size: 20px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    font-size: 17px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    font-size: 15px;
+  }
+
+  @media only screen and (max-width: 350px) {
+    font-size: 10px;
+  }
+}
+
+.buttonMenu {
+  @include fontSizesMenu();
+}
+
+.menu-wide {
+  width: 100%;
+}
+
+@mixin topSizeMenu {
+  @media only screen and (min-width: 801px) {
+    top: 41px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    top: 37px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    top: 34px;
+  }
+
+  @media only screen and (max-width: 350px) {
+    top: 27px;
+  }
+}
+
+.datalist-menu-scroll {
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  top: 0px;
+  left: 0px;
+}
+
+.datalist-menu-standard {
+  @include topSizeMenu();
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0px;
+}
+
+
+// Buttons in Menu animation off
+.flipButton span {
+  @include fontSizesMenu();
+  position: relative;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+// Buttons in Menu vertical flip animation on
+$count-flipButtons: 10;
+
+@for $i from 1 through $count-flipButtons {
+  .flipButton#{$i} span {
+    position: relative;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  .flipButton#{$i}:hover span {
+    position: relative;
+    white-space: nowrap;
+    color: #fff;
+    animation: verticalflip 2s ease-in-out infinite;
+    -ms-animation: verticalflip 2s ease-in-out infinite;
+    -webkit-animation: verticalflip 2s ease-in-out infinite;
+  }
+}
+
+
+@mixin hoverAnimationDelay ($flipButton-number, $count-char, $delay-second) {
+  @for $i from 1 through $count-char {
+    .flipButton#{$flipButton-number}:hover span:nth-child(#{$i}n) {
+      animation-delay: #{$i * $delay-second}s;
+    }
+  }
+}
+
+@include hoverAnimationDelay (1, 4, 0.14); // MENU
+@include hoverAnimationDelay (2, 6, 0.1); // STYLES
+@include hoverAnimationDelay (3, 7, 0.1); // FILTERS
+@include hoverAnimationDelay (4, 8, 0.1); // 1 FILTER
+@include hoverAnimationDelay (5, 9, 0.1); // 2 FILTERS
+@include hoverAnimationDelay (6, 5, 0.12); // TABLE
+@include hoverAnimationDelay (7, 9, 0.07); // DATALIST
+@include hoverAnimationDelay (8, 9, 0.07); // SELECTED
+@include hoverAnimationDelay (9, 5, 0.12); // 1 SORT
+@include hoverAnimationDelay (10, 6, 0.1); // 2 SORTS
+
+
+@keyframes verticalflip {
+  0% {
+    -webkit-transform: rotateX(0deg);
+    transform: rotateX(0deg);
+  }
+
+  25% {
+    -webkit-transform: rotateX(-90deg);
+    transform: rotateX(-90deg);
+  }
+
+  50% {
+    -webkit-transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
+  }
+
+  75% {
+    -webkit-transform: rotateX(-270deg);
+    transform: rotateX(-270deg);
+  }
+
+  100% {
+    -webkit-transform: rotateX(-360deg);
+    transform: rotateX(-360deg);
+  }
+}
+
+.footer {
+  font-size: 15px;
+
+  @media only screen and (max-width: 500px),
+  only screen and (max-height:500px) and (orientation:landscape) {
+    font-size: 12px;
+  }
+
+  @media only screen and (max-width: 350px),
+  only screen and (max-height:500px) and (orientation:landscape) {
+    font-size: 10px;
+  }
+
+  @font-face {
+    font-family: "MSX";
+    src: url("../../font/MSX-Screen0.ttf") format(truetype);
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  font-family: "MSX",
+  sans-serif;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.footer button {
+  margin-left: 5px;
+}

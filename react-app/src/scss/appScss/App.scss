@@ -1,0 +1,178 @@
+@import "bootstrap";
+
+
+
+
+
+
+$customColorApp: #21a6d5;
+
+.btn-outline-customapp {
+  @include button-outline-variant($customColorApp, #fffafa, lighten($customColorApp, 25%), $customColorApp, darken($customColorApp, 20%));
+  background: linear-gradient(-90deg, #3cd3e7, #21a6d5);
+  color: #fff;
+  border: none;
+
+  // Not forced landscape mode
+  @media screen and (min-width: 501px) {
+    background-attachment: fixed;
+  }
+
+
+  &:hover {
+    background: linear-gradient(-45deg, #f70a0b, #ee7752, #ecf700);
+    color: #fff;
+  }
+}
+
+.buttonSize {
+  &.span {
+
+    @media only screen and (max-width: 500px),
+    only screen and (max-height:500px) and (orientation:landscape) {
+      font-size: 10px;
+    }
+  }
+}
+
+
+//Force landscape mode in mobilestyle
+@media screen and (orientation: portrait) and (max-width: 500px) {
+  .responsive {
+    transform: rotate(-90deg);
+    transform-origin: left top;
+    width: 100vh;
+    height: 100vw;
+    overflow-x: hidden;
+    position: fixed;
+    top: 100%;
+    left: 0;
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 1;
+}
+
+
+#canvasRaster {
+  mix-blend-mode: screen;
+  z-index: 0;
+
+
+  @media screen and (orientation: portrait) and (max-width: 500px) {
+    top: 50%;
+    transform: scaleY(2) translate(0, 0);
+  }
+
+  @media not screen and (orientation: portrait) and (max-width: 500px) {
+    left: 50%;
+    transform: scaleY(2) translate(-50%, -25%);
+  }
+
+  &:hover {
+    cursor: pointer
+  }
+
+  ;
+}
+
+
+// Raster background size
+.backdrop {
+  position: fixed;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50%;
+  width: 100%;
+  background: #000;
+}
+
+@keyframes run {
+  0% {
+    top: -50vh;
+  }
+
+  100% {
+    top: 5vh;
+  }
+}
+
+.raster div {
+  height: 5vh;
+  overflow: hidden;
+}
+
+.raster .raster-span {
+  margin: 0;
+  background: linear-gradient(to bottom, #530 0%, #852 2%, #c67 4%, #ef7 6%, #fff 8%, #fff 10%, #ef7 12%, #c67 14%, #852 16%, #530 18%, rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 38%, #229 40%, #76e 42%, #aaa 44%, #af9 46%, #fff 48%, #fff 50%, #af9 52%, #aaa 54%, #76e 56%, #229 58%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0) 78%, #530 80%, #852 82%, #c67 84%, #ef7 86%, #fff 88%, #fff 90%, #ef7 92%, #c67 94%, #852 96%, #530 98%, rgba(0, 0, 0, 0) 100%);
+  height: 50vh;
+  top: 50vh;
+  position: relative;
+  animation: run 14s linear infinite;
+}
+
+@for $i from 1 through 15 {
+  div:nth-child(#{$i}) .raster-span {
+    animation-delay: #{$i * 0.06}s;
+  }
+}
+
+
+
+
+@font-face {
+  font-family: "MSX";
+  src: url("../../font/MSX-Screen0.ttf") format(truetype);
+  font-weight: normal;
+  font-style: normal;
+}
+
+.footer {
+  font-size: 15px;
+
+  @media only screen and (max-width: 500px),
+  only screen and (max-height:500px) and (orientation:landscape) {
+    font-size: 12px;
+  }
+
+  font-family: "MSX",
+  sans-serif;
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+}
+
+.footer button {
+  margin-left: 5px;
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayBlock {
+  display: block;
+}
+
+.showPixelSize {
+  display: block;
+  font-family: "MSX", sans-serif;
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+}
+
+.showPixelSize>label {
+  font-size: 15px;
+
+  @media only screen and (max-width: 500px),
+  only screen and (max-height:500px) and (orientation:landscape) {
+    font-size: 12px;
+  }
+}

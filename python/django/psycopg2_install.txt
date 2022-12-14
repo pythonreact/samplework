@@ -1,0 +1,9 @@
+
+
+
+pg_config file path postgresqlL14 app telepites utan:
+/Shared/Dbngin/postgresql/14.3/bin
+
+A psycopg2-binary telepítése elott a terminálból:
+export PATH=/Shared/Dbngin/postgresql/14.3/bin/:$PATH
+

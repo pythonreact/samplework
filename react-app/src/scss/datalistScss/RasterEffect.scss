@@ -1,0 +1,59 @@
+//Raster Stripes animation
+@keyframes rasterStripes {
+  0% {
+    top: -20vh;
+  }
+
+  50% {
+    top: 110vh;
+  }
+
+  100% {
+    top: -20vh;
+  }
+}
+
+@keyframes raster-z {
+  0% {
+    z-index: 3;
+    -webkit-transform: translateZ(0.1px);
+    -webkit-transform-style: preserve-3d;
+  }
+
+  79.9% {
+    z-index: -1;
+    -webkit-transform: translateZ(-0.1px);
+    -webkit-transform-style: preserve-3d;
+  }
+
+  100% {
+    z-index: -1;
+    -webkit-transform: translateZ(-0.1px);
+    -webkit-transform-style: preserve-3d;
+  }
+}
+
+@keyframes raster {
+  15% {
+    box-shadow: 0 50px 10px 0 rgba(#000, .5);
+  }
+
+  50% {
+    box-shadow: 0 0px 0px 0 rgba(#000, .5)
+  }
+}
+
+.rasterp {
+  margin: 0;
+  background: linear-gradient(to bottom, #873b31 0%, #000000 2%, #873b31 2%, #873b31 4%, #873b31 4%, #873b31 6%, #ba7369 6%, #ba7369 8%, #873b31 8%, #873b31 10%, #ba7369 10%, #ba7369 12%, #ba7369 12%, #ba7369 14%, #dce78c 14%, #dce78c 16%, #ba7369 16%, #ba7369 18%, #dce78c 18%, #dce78c 20%, #dce78c 20%, #dce78c 22%, #ffffff 22%, #ffffff 24%, #dce78c 24%, #dce78c 26%, #ffffff 26%, #ffffff 28%, #ffffff 28%, #ffffff 30%, #dce78c 30%, #dce78c 32%, #ffffff 32%, #ffffff 34%, #dce78c 34%, #dce78c 36%, #dce78c 36%, #dce78c 38%, #ba7369 38%, #ba7369 40%, #dce78c 40%, #dce78c 42%, #ba7369 42%, #ba7369 44%, #ba7369 44%, #ba7369 46%, #873b31 46%, #873b31 48%, #ba7369 48%, #ba7369 50%, #873b31 50%, #873b31 52%, #873b31 52%, #873b31 54%, #000000 54%, #000000 56%, #873b31 56%, #873b31 58%, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0) 100%);
+  height: 10vh;
+  width: var(--width);
+  left: 0;
+  top: -20vh;
+  position: absolute;
+  animation-name: rasterStripes, raster-z, raster;
+  animation-duration: 15s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-delay: 5s;
+}

@@ -1,0 +1,154 @@
+// Header Swing animation on
+.headerAnimate1 {
+  position: fixed;
+  color: transparent;
+  -webkit-text-stroke: 3px darken(#21a6d5, 5%);
+  animation: skew 5s ease-in-out infinite;
+}
+
+// Header Swing animation on
+.headerAnimate2 {
+  position: fixed;
+  color: lighten(#e15d5d, 5%);
+  animation: headerfont 5s ease-in-out infinite;
+}
+
+// Header Swing animation off
+.header1 {
+  position: fixed;
+  color: transparent;
+  -webkit-text-stroke: 3px darken(#21a6d5, 5%);
+}
+
+// Header swing animation off
+.header2 {
+  position: fixed;
+  color: lighten(#e15d5d, 5%);
+}
+
+@keyframes headerfont {
+
+  0%,
+  100% {
+    transform: skewX(15deg) skewY(2deg);
+    clip-path: polygon(0% 45%,
+        16% 44%,
+        33% 50%,
+        54% 60%,
+        70% 61%,
+        84% 59%,
+        100% 52%,
+        100% 100%,
+        0% 100%);
+  }
+
+  50% {
+    transform: skewX(-15deg) skewY(-2deg);
+    clip-path: polygon(0% 60%,
+        15% 65%,
+        34% 66%,
+        51% 62%,
+        67% 50%,
+        84% 45%,
+        100% 46%,
+        100% 100%,
+        0% 100%);
+  }
+}
+
+@keyframes skew {
+
+  0%,
+  100% {
+    transform: skewX(15deg) skewY(2deg)
+  }
+
+  ;
+
+  50% {
+    transform: skewX(-15deg) skewY(-2deg)
+  }
+
+  ;
+}
+
+
+@mixin swingHeightMixin($tHeight) {
+  @media only screen and (min-width: 801px) {
+    height: calc(157px + $tHeight);
+  }
+
+  @media only screen and (max-width: 800px) {
+    height: calc(126px + $tHeight);
+  }
+
+  @media only screen and (max-width: 500px) {
+    height: calc(106px + $tHeight);
+  }
+
+  @media only screen and (max-width: 350px) {
+    height: calc(77px + $tHeight*0.7);
+  }
+}
+
+// SwingLines
+.swingHeight {
+  $tHeight: var(--topHeight);
+  @include swingHeightMixin($tHeight);
+}
+
+
+@mixin swingerFontHeight($tHeight) {
+  @media only screen and (min-width: 1101px) {
+    top: calc(11px + $tHeight);
+    --left: 300px;
+    font-size: 8em;
+  }
+
+  @media only screen and (max-width: 1100px) {
+    top: calc(17px + $tHeight);
+    --left: 170px;
+    font-size: 7em;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    top: calc(17px + $tHeight);
+    --left: 150px;
+    font-size: 7em;
+  }
+
+  @media only screen and (max-width: 800px) {
+    top: calc(24px + $tHeight);
+    --left: 70px;
+    font-size: 6em;
+  }
+
+  @media only screen and (max-width: 500px) {
+    top: calc(21px + $tHeight);
+    --left: 50px;
+    font-size: 5em;
+  }
+
+  @media only screen and (max-width: 400px) {
+    top: calc(27px + $tHeight);
+    --left: 40px;
+    font-size: 4.3em;
+  }
+
+  @media only screen and (max-width: 350px) {
+    top: calc(17px + $tHeight*0.7);
+    --left: 30px;
+    font-size: 4em;
+  }
+}
+
+// Header swing text animation
+.swingerFont {
+  @include swingerFontHeight(var(--topHeight));
+  align-items: start;
+  left: var(--left);
+  position: relative;
+  white-space: nowrap;
+  font-weight: bold;
+  font-family: "Helvetica";
+}

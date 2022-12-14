@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+    nginx:
+        container_name: nginx
+        restart: unless-stopped
+        image: pythonreact_nginx
+        build:
+            context: .
+            dockerfile: ./docker/nginx/Dockerfile
+        volumes:
+            - ./docker/nginx/config:/etc/nginx/conf.d
+            - nginx-logs:/logs
+            - frontend:/frontend
+        environment:
+            NODE_ENV: dev
+        ports:
+            - 80:80
+        depends_on:
+            - backend
+        networks:
+            - pythonreact_network
+    backend:
+        container_name: backend
+        restart: unless-stopped
+        image: pythonreact_backend
+        build:
+            context: .
+            dockerfile: ./docker/backend/Dockerfile
+        volumes:
+            - backend:/backend
+            - django-logs:/backend/django/logs
+        ports:
+            - 8000:8000
+        environment:
+            - DJANGO_SETTINGS_DEBUG=0 # Debug mode 1 or Production 0
+
+            - POSTGRES_HOST=db
+            - POSTGRES_DB=database_production
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=admin
+            - POSTGRES_PORT=15432
+        depends_on:
+            - db
+        networks:
+            - pythonreact_network
+    db:
+        container_name: data
+        restart: always
+        image: pythonreact_db
+        build:
+            context: .
+            dockerfile: ./docker/data/Dockerfile
+        command: postgres -c port=15432
+        volumes:
+            - postgres_data:/var/lib/postgresql/data:rw
+        environment:
+            - POSTGRES_HOST_AUTH_METHOD=trust
+            - POSTGRES_HOST=db
+            - POSTGRES_DB=database_production
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=admin
+            - POSTGRES_PORT=15432
+        ports:
+            - 15432:15432
+        networks:
+            - pythonreact_network
+volumes:
+    backend:
+    frontend:
+    postgres_data:
+    nginx-logs:
+    django-logs:
+networks:
+    pythonreact_network:
+        driver: bridge

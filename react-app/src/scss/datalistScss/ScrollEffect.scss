@@ -1,0 +1,102 @@
+// Scroll text
+@mixin scrollHeight ($tHeight) {
+  @media only screen and (min-width: 801px) {
+    top: calc(35px + $tHeight);
+  }
+
+  @media only screen and (max-width: 800px) {
+    top: calc(30px + $tHeight*0.9);
+  }
+
+  @media only screen and (max-width: 500px) {
+    top: calc(30px + $tHeight*0.9);
+  }
+
+  @media only screen and (max-width: 350px) {
+    top: calc(21px + $tHeight*0.7);
+  }
+}
+
+
+@mixin scroll($scrollheight, $fontsize, $speed, $x0, $x40, $x60, $x100, $tHeight) {
+  @include scrollHeight($tHeight);
+  width: 100%;
+  left: 100%;
+  position: relative;
+  font-size: $fontsize;
+  white-space: nowrap;
+  color: rgb(0, 0, 0);
+
+  animation: scroller #{$speed}s ease-in infinite;
+  -ms-animation: scroller #{speed}s ease-in infinite;
+  -webkit-animation: scroller #{speed}s ease-in infinite;
+
+  @keyframes scroller {
+    0% {
+      -webkit-transform: translate($x0, $scrollheight);
+      transform: translate($x0, $scrollheight);
+    }
+
+    40% {
+      -webkit-transform: translate($x40, 0px);
+      transform: translate($x40, 0px);
+    }
+
+    60% {
+      -webkit-transform: translate($x60, 0px);
+      transform: translate($x60, 0px);
+    }
+
+    100% {
+      -webkit-transform: translate($x100, $scrollheight);
+      transform: translate($x100, $scrollheight);
+    }
+  }
+}
+
+.scrollText {
+  $tHeight: var(--topHeight);
+
+  @media only screen and (min-width: 801px) {
+    @include scroll(40px, 17px, 9, 50%, -60%, -60%, -150%, $tHeight);
+  }
+
+  @media only screen and (max-width: 800px) {
+    @include scroll(30px, 15px, 7, 20%, -70%, -70%, -200%, $tHeight);
+  }
+
+  @media only screen and (max-width: 500px) {
+    @include scroll(20px, 12px, 5, 20%, -77%, -77%, -215%, $tHeight);
+  }
+
+  @media only screen and (max-width: 350px) {
+    @include scroll(20px, 10px, 5, 20%, -77%, -77%, -200%, $tHeight);
+  }
+}
+
+.scrollNotAnimated {
+  $tHeight: var(--topHeight);
+  @include scrollHeight($tHeight);
+  width: max-content;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: relative;
+  white-space: nowrap;
+  color: rgb(0, 0, 0);
+
+  @media only screen and (min-width: 801px) {
+    font-size: 17px;
+  }
+
+  @media only screen and (max-width: 800px) {
+    font-size: 12px;
+  }
+
+  @media only screen and (max-width: 500px) {
+    font-size: 12px;
+  }
+
+  @media only screen and (max-width: 350px) {
+    font-size: 10px;
+  }
+}

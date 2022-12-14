@@ -1,0 +1,92 @@
+.modal-chart {
+  position: absolute;
+  top: -50%;
+  transform: translate(0%, -50%);
+}
+
+.modal-content-chart {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #21a6d5, #17d5ab);
+  background-size: 170% 170%;
+  animation: modal-gradient 5s linear infinite;
+}
+
+@keyframes modal-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.modal-content-notanimated-chart {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #21a6d5, #17d5ab);
+  background-size: 100% 100%;
+}
+
+
+.overlay-notanimated {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  mix-blend-mode: lighten;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #21a6d5, #17d5ab);
+  width: 100%;
+  height: 100%;
+}
+
+
+.overlay {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  mix-blend-mode: lighten;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #21a6d5, #17d5ab);
+  background-size: 170% 170%;
+  width: 100%;
+  height: 100%;
+  animation: modal-gradient 5s linear infinite;
+}
+
+.wrap {
+  background-color: #000;
+  position: relative;
+}
+
+.canvas {
+  margin: -16px;
+  color: black;
+  background-color: #fff;
+  mix-blend-mode: screen;
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayBlock {
+  display: block;
+}
+
+.marginRight5 {
+  margin-right: 5px;
+}
+
+.select {
+  background: transparent;
+  cursor: pointer;
+}
+
+.marginLeft5 {
+  margin-left: 5px;
+}
+
+.marginLeft15 {
+  margin-left: 15px;
+}
